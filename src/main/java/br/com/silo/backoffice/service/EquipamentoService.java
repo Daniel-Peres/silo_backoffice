@@ -11,6 +11,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service(value = "equipamentoService")
 public class EquipamentoService {
     @Autowired
@@ -32,6 +34,10 @@ public class EquipamentoService {
         Pageable paging = PageRequest.of(page, pageSize);
 
         return equipamentoDAO.findPaged(codEquipamento, paging);
+    }
+
+    public List<Equipamento> getDisabled(long empresaId) {
+        return equipamentoDAO.findDisabled(empresaId);
     }
 
     public void saveEquipamento(EquipamentoDTO equipamentoDTO) {

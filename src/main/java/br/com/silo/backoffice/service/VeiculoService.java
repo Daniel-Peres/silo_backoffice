@@ -56,7 +56,9 @@ public class VeiculoService {
         veiculo.setPlacaVeiculo(veiculoDTO.getPlacaVeiculo());
         veiculo.setEmpresa(veiculoDTO.getEmpresa());
         veiculo.setModeloVeiculo(veiculoDTO.getModeloVeiculo());
-        veiculo.setEquipamento(veiculoDTO.getEquipamento());
+        if(veiculoDTO.getEquipamento().getId() != null) {
+            veiculo.setEquipamento(veiculoDTO.getEquipamento());
+        }
         veiculo.setNumeroLinha(veiculoDTO.getNumeroLinha());
         veiculo.setTotalLugares(veiculoDTO.getTotalLugares());
         veiculo.setLugaresSentado(veiculoDTO.getLugaresSentado());
@@ -64,10 +66,10 @@ public class VeiculoService {
 
         veiculoDAO.save(veiculo);
 
-        Equipamento equipamento = equipamentoDAO.findById(veiculoDTO.getEquipamento().getId()).orElse(null);
-
-        updateEqptStatus(equipamento,"ATIVO");
-
+        if(veiculoDTO.getEquipamento() .getId()!= null) {
+            Equipamento equipamento = equipamentoDAO.findById(veiculoDTO.getEquipamento().getId()).orElse(null);
+            updateEqptStatus(equipamento,"ATIVO");
+        }
     }
 
     public void updateVeiculo(VeiculoDTO veiculoDTO) {
@@ -84,15 +86,19 @@ public class VeiculoService {
             throw new NotFoundException();
         }
 
-        Equipamento oldEqpto = equipamentoDAO.findById(veiculo.getEquipamento().getId()).orElse(null);
-
+        Equipamento oldEqpto = null;
+        if(veiculo.getEquipamento() != null)
+            oldEqpto = equipamentoDAO.findById(veiculo.getEquipamento().getId()).orElse(null);
 
         veiculo.setPlacaVeiculo(veiculoDTO.getPlacaVeiculo());
 
         veiculo.setPlacaVeiculo(veiculoDTO.getPlacaVeiculo());
         veiculo.setEmpresa(veiculoDTO.getEmpresa());
         veiculo.setModeloVeiculo(veiculoDTO.getModeloVeiculo());
-        veiculo.setEquipamento(veiculoDTO.getEquipamento());
+        if(veiculoDTO.getEquipamento().getId() != null)
+            veiculo.setEquipamento(veiculoDTO.getEquipamento());
+        else
+            veiculo.setEquipamento(null);
         veiculo.setNumeroLinha(veiculoDTO.getNumeroLinha());
         veiculo.setTotalLugares(veiculoDTO.getTotalLugares());
         veiculo.setLugaresSentado(veiculoDTO.getLugaresSentado());
@@ -100,18 +106,21 @@ public class VeiculoService {
 
         veiculoDAO.save(veiculo);
 
-        Equipamento newEqpto = equipamentoDAO.findById(veiculoDTO.getEquipamento().getId()).orElse(null);
-
-
-
-        if ((newEqpto!=oldEqpto)&&(newEqpto!=null)&&(oldEqpto!=null)) {
-            updateEqptStatus(oldEqpto,"INATIVO ");
-            updateEqptStatus(newEqpto,"ATIVO ");
-        } if ((newEqpto!=null)&&(oldEqpto==null)){
-            updateEqptStatus(newEqpto,"ATIVO ");
-        } if ((newEqpto==null)&&(oldEqpto!=null)){
-            updateEqptStatus(oldEqpto,"INATIVO ");
+        if(veiculoDTO.getEquipamento().getId() != null) {
+            Equipamento newEqpto = equipamentoDAO.findById(veiculoDTO.getEquipamento().getId()).orElse(null);
+            updateEqptStatus(newEqpto, "ATIVO ");
         }
+
+        if(oldEqpto != null)
+            updateEqptStatus(oldEqpto,"INATIVO ");
+//        if ((newEqpto!=oldEqpto)&&(newEqpto!=null)&&(oldEqpto!=null)) {
+//            updateEqptStatus(oldEqpto,"INATIVO ");
+//
+//        } if ((newEqpto!=null)&&(oldEqpto==null)){
+//            updateEqptStatus(newEqpto,"ATIVO ");
+//        } if ((newEqpto==null)&&(oldEqpto!=null)){
+//            updateEqptStatus(oldEqpto,"INATIVO ");
+//        }
 
     }
 

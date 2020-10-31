@@ -5,7 +5,10 @@ import br.com.silo.backoffice.domain.dto.EquipamentoDTO;
 import br.com.silo.backoffice.service.EquipamentoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -18,6 +21,11 @@ public class EquipamentoController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public Page<Equipamento> getEquipamento(@RequestParam String codEquipamento, @RequestParam Integer pageSize, @RequestParam Integer page) {
         return equipamentoService.get(codEquipamento, pageSize, page);
+    }
+
+    @RequestMapping(value = "/disabled", method = RequestMethod.GET)
+    public List<Equipamento> getEquipamentoDisalbed(@RequestParam long empresaId) {
+        return equipamentoService.getDisabled(empresaId);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
