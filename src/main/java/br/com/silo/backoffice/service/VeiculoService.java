@@ -108,11 +108,11 @@ public class VeiculoService {
 
         if(veiculoDTO.getEquipamento().getId() != null) {
             Equipamento newEqpto = equipamentoDAO.findById(veiculoDTO.getEquipamento().getId()).orElse(null);
-            updateEqptStatus(newEqpto, "ATIVO ");
+            updateEqptStatus(newEqpto, "ATIVO");
         }
 
         if(oldEqpto != null)
-            updateEqptStatus(oldEqpto,"INATIVO ");
+            updateEqptStatus(oldEqpto,"INATIVO");
 //        if ((newEqpto!=oldEqpto)&&(newEqpto!=null)&&(oldEqpto!=null)) {
 //            updateEqptStatus(oldEqpto,"INATIVO ");
 //
