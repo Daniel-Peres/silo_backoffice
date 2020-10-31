@@ -29,7 +29,6 @@ public class JwtAuthenticationController {
         authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
         final JwtUserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
 
-
         final String token = jwtTokenUtil.generateToken(userDetails);
         Date expireAt = jwtTokenUtil.getExpirationDateFromToken(token);
         return ResponseEntity.ok(new JwtResponse(token, expireAt.getTime(), userDetails.getId(), userDetails.getNome(), userDetails.getEmpresa()));
