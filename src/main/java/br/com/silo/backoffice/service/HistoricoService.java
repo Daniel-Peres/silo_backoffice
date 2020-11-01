@@ -1,6 +1,7 @@
 package br.com.silo.backoffice.service;
 
 import br.com.silo.backoffice.dao.HistoricoDAO;
+import br.com.silo.backoffice.domain.Equipamento;
 import br.com.silo.backoffice.domain.Historico;
 import br.com.silo.backoffice.domain.dto.HistoricoDTO;
 import br.com.silo.backoffice.exception.NotFoundException;
@@ -11,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service(value = "historicoService")
 public class HistoricoService {
@@ -27,6 +29,10 @@ public class HistoricoService {
             throw new NotFoundException();
         }
         return historico;
+    }
+
+    public List<Historico> getGeral(long empresaId) {
+        return historicoDAO.findGeral(empresaId);
     }
 
     public Page<Historico> get(String datahora, Integer pageSize, Integer page) {
