@@ -28,6 +28,11 @@ public class HistoricoController {
         return historicoService.getGeral(empresaId);
     }
 
+    @RequestMapping(value = "/status", method = RequestMethod.GET)
+    public Historico getStatus(@RequestParam long empresaId,@RequestParam long veiculoId) {
+        return historicoService.getStatus(empresaId,veiculoId);
+    }
+
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public HistoricoDTO getUserByID(@PathVariable Long id) {
         return HistoricoDTO.converter(historicoService.get(id));

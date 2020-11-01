@@ -44,4 +44,8 @@ public class HistoricoService {
     public void saveHistorico(HistoricoDTO historicoDTO) {
 
     }
+
+    public Historico getStatus(long empresaId,long veiculoId) {
+        return historicoDAO.findStatus(empresaId, veiculoId);
+    }
 }
