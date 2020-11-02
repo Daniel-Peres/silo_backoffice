@@ -29,7 +29,7 @@ public class VeiculoController {
     }
 
     @RequestMapping(value = "/geral", method = RequestMethod.GET)
-    public List<Veiculo> getHistoricoGeral(@RequestParam long empresaId) {
+    public List<Veiculo> getGeral(@RequestParam long empresaId) {
         return veiculoService.getGeral(empresaId);
     }
 

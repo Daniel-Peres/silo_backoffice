@@ -20,10 +20,13 @@ public class HistoricoDTO {
 
     String status;
 
+    Equipamento equipamento;
+
     public static HistoricoDTO converter(Historico historico) {
         HistoricoDTO historicoDTO = new HistoricoDTO();
         historicoDTO.setId(historico.getId());
         historicoDTO.setVeiculo(historico.getVeiculo());
+        historicoDTO.setEquipamento(historico.getEquipamento());
         historicoDTO.setDatahora(historico.getDatahora());
         historicoDTO.setQtdPassageiros(historico.getQtdPassageiros());
         historicoDTO.setId(historico.getQtdPassageiros());
@@ -68,5 +71,13 @@ public class HistoricoDTO {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Equipamento getEquipamento() {
+        return equipamento;
+    }
+
+    public void setEquipamento(Equipamento equipamento) {
+        this.equipamento = equipamento;
     }
 }

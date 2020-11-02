@@ -16,6 +16,10 @@ public class Historico {
     @JoinColumn(nullable = false)
     Veiculo veiculo;
 
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    Equipamento equipamento;
+
     @Column(nullable = false)
     String datahora;
 
@@ -63,5 +67,13 @@ public class Historico {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Equipamento getEquipamento() {
+        return equipamento;
+    }
+
+    public void setEquipamento(Equipamento equipamento) {
+        this.equipamento = equipamento;
     }
 }
