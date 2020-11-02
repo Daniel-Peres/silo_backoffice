@@ -1,11 +1,14 @@
 package br.com.silo.backoffice.controller;
 
+import br.com.silo.backoffice.domain.Historico;
 import br.com.silo.backoffice.domain.Veiculo;
 import br.com.silo.backoffice.domain.dto.VeiculoDTO;
 import br.com.silo.backoffice.service.VeiculoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -25,6 +28,10 @@ public class VeiculoController {
         return VeiculoDTO.converter(veiculoService.get(id));
     }
 
+    @RequestMapping(value = "/geral", method = RequestMethod.GET)
+    public List<Veiculo> getHistoricoGeral(@RequestParam long empresaId) {
+        return veiculoService.getGeral(empresaId);
+    }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public void post(@RequestBody VeiculoDTO veiculo) {

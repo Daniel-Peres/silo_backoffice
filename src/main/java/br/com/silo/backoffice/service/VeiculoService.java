@@ -3,6 +3,7 @@ package br.com.silo.backoffice.service;
 import br.com.silo.backoffice.dao.EquipamentoDAO;
 import br.com.silo.backoffice.dao.VeiculoDAO;
 import br.com.silo.backoffice.domain.Equipamento;
+import br.com.silo.backoffice.domain.Historico;
 import br.com.silo.backoffice.domain.Veiculo;
 import br.com.silo.backoffice.domain.dto.EquipamentoDTO;
 import br.com.silo.backoffice.domain.dto.VeiculoDTO;
@@ -13,6 +14,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 import static br.com.silo.backoffice.service.EquipamentoService.*;
 
@@ -42,6 +45,10 @@ public class VeiculoService {
         Pageable paging = PageRequest.of(page, pageSize);
 
         return veiculoDAO.findPaged(placaVeiculo, paging);
+    }
+
+    public List<Veiculo> getGeral(long empresaId) {
+        return veiculoDAO.findGeral(empresaId);
     }
 
     public void saveVeiculo(VeiculoDTO veiculoDTO) {
