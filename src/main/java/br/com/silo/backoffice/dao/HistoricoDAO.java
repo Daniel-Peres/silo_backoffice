@@ -23,6 +23,6 @@ public interface HistoricoDAO extends PagingAndSortingRepository<Historico, Long
     @Query(nativeQuery = true, value = "SELECT * FROM historico h JOIN veiculo v ON h.veiculo_id=v.id JOIN equipamento q ON  v.equipamento_id=q.id WHERE v.empresa_id = ?1")
     List<Historico> findGeral(long empresaId);
 
-    @Query(nativeQuery = true, value = "SELECT * FROM historico h JOIN veiculo v ON h.veiculo_id=v.id JOIN equipamento q ON  v.equipamento_id=q.id WHERE v.empresa_id =?1 AND v.id=?1 ORDER BY h.id DESC LIMIT 1;")
+    @Query(nativeQuery = true, value = "SELECT * FROM historico h JOIN veiculo v ON h.veiculo_id=v.id JOIN equipamento q ON  v.equipamento_id=q.id WHERE v.empresa_id =?1 AND v.id=?2 ORDER BY h.id DESC LIMIT 1")
     Historico findStatus(long empresaId,long veiculoId);
 }
