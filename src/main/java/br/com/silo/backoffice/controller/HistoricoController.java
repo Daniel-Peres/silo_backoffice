@@ -18,9 +18,14 @@ public class HistoricoController {
     @Autowired
     HistoricoService historicoService;
 
+//    @RequestMapping(value = "/list", method = RequestMethod.GET)
+//    public Page<Historico> getHistorico(@RequestParam String datahora, @RequestParam Integer pageSize, @RequestParam Integer page) {
+//        return historicoService.get(datahora, pageSize, page);
+//    }
+
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public Page<Historico> getHistorico(@RequestParam String datahora, @RequestParam Integer pageSize, @RequestParam Integer page) {
-        return historicoService.get(datahora, pageSize, page);
+    public Page<Historico> getHistorico(@RequestParam String datahora, @RequestParam long empresaId, @RequestParam Integer pageSize, @RequestParam Integer page) {
+        return historicoService.get(datahora, empresaId, pageSize, page);
     }
 
     @RequestMapping(value = "/geral", method = RequestMethod.GET)

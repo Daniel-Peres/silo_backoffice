@@ -35,10 +35,16 @@ public class HistoricoService {
         return historicoDAO.findGeral(empresaId);
     }
 
-    public Page<Historico> get(String datahora, Integer pageSize, Integer page) {
+//    public Page<Historico> get(String datahora, Integer pageSize, Integer page) {
+//        Pageable paging = PageRequest.of(page, pageSize);
+//
+//        return historicoDAO.findPaged(datahora, paging);
+//    }
+
+    public Page<Historico> get(String datahora, long empresaId,  Integer pageSize, Integer page) {
         Pageable paging = PageRequest.of(page, pageSize);
 
-        return historicoDAO.findPaged(datahora, paging);
+        return historicoDAO.findPaged(datahora, empresaId, paging);
     }
 
     public void saveHistorico(HistoricoDTO historicoDTO) {
