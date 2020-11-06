@@ -30,10 +30,16 @@ public class EquipamentoService {
         return equipamento;
     }
 
-    public Page<Equipamento> get(String codEquipamento, Integer pageSize, Integer page) {
+//    public Page<Equipamento> get(String codEquipamento, Integer pageSize, Integer page) {
+//        Pageable paging = PageRequest.of(page, pageSize);
+//
+//        return equipamentoDAO.findPaged(codEquipamento, paging);
+//    }
+
+    public Page<Equipamento> get(String codEquipamento, long empresaId, Integer pageSize, Integer page) {
         Pageable paging = PageRequest.of(page, pageSize);
 
-        return equipamentoDAO.findPaged(codEquipamento, paging);
+        return equipamentoDAO.findPaged(codEquipamento, empresaId, paging);
     }
 
     public List<Equipamento> getDisabled(long empresaId) {

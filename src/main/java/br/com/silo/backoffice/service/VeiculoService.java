@@ -41,10 +41,16 @@ public class VeiculoService {
         return veiculo;
     }
 
-    public Page<Veiculo> get(String placaVeiculo, Integer pageSize, Integer page) {
+//    public Page<Veiculo> get(String placaVeiculo, Integer pageSize, Integer page) {
+//        Pageable paging = PageRequest.of(page, pageSize);
+//
+//        return veiculoDAO.findPaged(placaVeiculo, paging);
+//    }
+
+    public Page<Veiculo> get(String placaVeiculo, long empresaId, Integer pageSize, Integer page) {
         Pageable paging = PageRequest.of(page, pageSize);
 
-        return veiculoDAO.findPaged(placaVeiculo, paging);
+        return veiculoDAO.findPaged(placaVeiculo, empresaId, paging);
     }
 
     public List<Veiculo> getGeral(long empresaId) {

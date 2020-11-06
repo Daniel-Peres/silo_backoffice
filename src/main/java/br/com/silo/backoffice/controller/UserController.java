@@ -24,9 +24,14 @@ public class UserController {
         return UsuarioDTO.converter(userService.get(currentPrincipalName));
     }
 
+//    @RequestMapping(value = "/list", method = RequestMethod.GET)
+//    public Page<Usuario> getUsers(@RequestParam String name, @RequestParam Integer pageSize, @RequestParam Integer page) {
+//        return userService.get(name, pageSize, page);
+//    }
+
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public Page<Usuario> getUsers(@RequestParam String name, @RequestParam Integer pageSize, @RequestParam Integer page) {
-        return userService.get(name, pageSize, page);
+    public Page<Usuario> getUsers(@RequestParam String name, @RequestParam long empresaId, @RequestParam Integer pageSize, @RequestParam Integer page) {
+        return userService.get(name, empresaId, pageSize, page);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)

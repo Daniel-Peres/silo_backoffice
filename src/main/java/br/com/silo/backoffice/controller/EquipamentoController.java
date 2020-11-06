@@ -18,9 +18,14 @@ public class EquipamentoController {
     @Autowired
     EquipamentoService equipamentoService;
 
+//    @RequestMapping(value = "/list", method = RequestMethod.GET)
+//    public Page<Equipamento> getEquipamento(@RequestParam String codEquipamento, @RequestParam Integer pageSize, @RequestParam Integer page) {
+//        return equipamentoService.get(codEquipamento, pageSize, page);
+//    }
+
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public Page<Equipamento> getEquipamento(@RequestParam String codEquipamento, @RequestParam Integer pageSize, @RequestParam Integer page) {
-        return equipamentoService.get(codEquipamento, pageSize, page);
+    public Page<Equipamento> getEquipamento(@RequestParam String codEquipamento, @RequestParam long empresaId, @RequestParam Integer pageSize, @RequestParam Integer page) {
+        return equipamentoService.get(codEquipamento, empresaId, pageSize, page);
     }
 
     @RequestMapping(value = "/disabled", method = RequestMethod.GET)

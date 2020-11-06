@@ -18,9 +18,14 @@ public class VeiculoController {
     @Autowired
     VeiculoService veiculoService;
 
+//    @RequestMapping(value = "/list", method = RequestMethod.GET)
+//    public Page<Veiculo> getVeiculos(@RequestParam String placaVeiculo, @RequestParam Integer pageSize, @RequestParam Integer page) {
+//        return veiculoService.get(placaVeiculo, pageSize, page);
+//    }
+
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public Page<Veiculo> getVeiculos(@RequestParam String placaVeiculo, @RequestParam Integer pageSize, @RequestParam Integer page) {
-        return veiculoService.get(placaVeiculo, pageSize, page);
+    public Page<Veiculo> getVeiculos(@RequestParam String placaVeiculo, @RequestParam long empresaId, @RequestParam Integer pageSize, @RequestParam Integer page) {
+        return veiculoService.get(placaVeiculo, empresaId, pageSize, page);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
