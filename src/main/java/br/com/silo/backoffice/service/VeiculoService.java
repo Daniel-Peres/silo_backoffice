@@ -15,6 +15,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 import static br.com.silo.backoffice.service.EquipamentoService.*;
@@ -163,14 +164,16 @@ public class VeiculoService {
         Veiculo veiculo = veiculoDAO.findById(id).orElse(null);
 
         //Verifica se usuário existe.
-        if (veiculo == null) {
-            throw new NotFoundException();
+        if (veiculo == null) { throw new NotFoundException(); }
+
+        Equipamento equipamento = null;
+        if(veiculo.getEquipamento() != null) equipamento = equipamentoDAO.findById(veiculo.getEquipamento().getId()).orElse(null);
+
+        try {
+            veiculoDAO.delete(veiculo);
+            if (equipamento != null) updateEqptStatus(equipamento, "INATIVO");
+        } catch (Exception ex) {
+            throw new BadRequestException("Veículo possui histórico. Não é possível realizar a exclusão.");
         }
-
-        Equipamento equipamento = equipamentoDAO.findById(veiculo.getEquipamento().getId()).orElse(null);
-
-        updateEqptStatus(equipamento,"INATIVO");
-
-        veiculoDAO.delete(veiculo);
     }
 }
