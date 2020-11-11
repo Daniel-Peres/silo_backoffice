@@ -73,7 +73,14 @@ public class HistoricoService {
                         historico.setEquipamento(veiculo.getEquipamento());
                         historico.setQtdPassageiros(qty);
                         historico.setVeiculo(veiculo);
-                        historico.setStatus("LOTACAO");
+
+//                        if(qty < veiculo.getTotalLugares() * 0.33){
+                            historico.setStatus("Lotação Baixa");
+//                        }else if (qty < veiculo.getTotalLugares() * 0.66){
+//                            historico.setStatus("Lotação Média");
+//                        }else {
+//                            historico.setStatus("Lotação Alta");
+//                        }
 
                         historicoDAO.save(historico);
                     } else {
