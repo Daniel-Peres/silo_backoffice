@@ -16,6 +16,9 @@ public interface VeiculoDAO extends PagingAndSortingRepository<Veiculo, Long> {
     @Query("SELECT v FROM Veiculo v WHERE v.placa_veiculo = ?1")
     Veiculo findByUsername(String placaVeiculo);
 
+    @Query("SELECT v FROM Veiculo v WHERE v.id = ?1")
+    Veiculo findByID(long id);
+
 //    @Query(nativeQuery = true, value = "SELECT * FROM veiculo v JOIN empresa e ON v.empresa_id=e.id LEFT JOIN equipamento q ON  v.equipamento_id=q.id WHERE placa_veiculo LIKE concat('%', ?1,'%')")
 //    Page<Veiculo> findPaged(String placaVeiculo, Pageable pageable);
 

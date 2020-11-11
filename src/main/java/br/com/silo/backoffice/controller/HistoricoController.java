@@ -46,6 +46,6 @@ public class HistoricoController {
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public void post(@RequestBody HistoricoDTO historico) {
-        historicoService.saveHistorico(historico);
+        historicoService.saveHistorico("");
     }
 }
