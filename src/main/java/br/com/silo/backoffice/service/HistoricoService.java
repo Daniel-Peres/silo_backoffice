@@ -13,6 +13,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -64,7 +65,11 @@ public class HistoricoService {
                 if(veiculo != null) {
                     if (veiculo.getEquipamento() != null) {
                         Historico historico = new Historico();
-                        historico.setDatahora(new Date().toString());
+
+                        SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss");
+                        String date = fmt.format(new Date());
+
+                        historico.setDatahora(date);
                         historico.setEquipamento(veiculo.getEquipamento());
                         historico.setQtdPassageiros(qty);
                         historico.setVeiculo(veiculo);
