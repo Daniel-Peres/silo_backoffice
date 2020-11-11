@@ -163,7 +163,7 @@ public class VeiculoService {
     public void deleteVeiculo(Long id) {
         Veiculo veiculo = veiculoDAO.findById(id).orElse(null);
 
-        //Verifica se usuário existe.
+        //Verifica se veículo existe.
         if (veiculo == null) { throw new NotFoundException(); }
 
         Equipamento equipamento = null;
