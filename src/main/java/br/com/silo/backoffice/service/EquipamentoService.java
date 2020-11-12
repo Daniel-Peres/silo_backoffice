@@ -104,16 +104,22 @@ public class EquipamentoService {
     public void deleteEquipamento(Long id) {
         Equipamento equipamento = equipamentoDAO.findById(id).orElse(null);
 
-        //Verifica se usuário existe.
+        //Verifica se equipamento existe.
         if (equipamento == null) {
             throw new NotFoundException();
         }
 
-        String status = equipamento.getStatusEquipamento();
+//        String status = equipamento.getStatusEquipamento();
+//
+//        if (equipamento.getStatusEquipamento() == "ATIVO") {
+//            throw new BadRequestException("Não é possível excluir um equipamento ativo.");
+//        }
+//        equipamentoDAO.delete(equipamento);
 
-        if (status == "ATIVO") {
-            throw new BadRequestException("Não é possível excluir um equipamento ativo.");
+        try {
+            if (equipamento.getStatusEquipamento() != "ATIVO") equipamentoDAO.delete(equipamento);
+        } catch (Exception ex) {
+            throw new BadRequestException("Equipamento possui histórico. Não é possível realizar a exclusão.");
         }
-        equipamentoDAO.delete(equipamento);
     }
 }
