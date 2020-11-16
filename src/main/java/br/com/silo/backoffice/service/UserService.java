@@ -30,16 +30,16 @@ public class UserService {
         return user;
     }
 
-//    public Page<Usuario> get(String name, Integer pageSize, Integer page) {
-//        Pageable paging = PageRequest.of(page, pageSize);
-//
-//        return usuarioDAO.findPaged(name, paging);
-//    }
-
-    public Page<Usuario> get(String name, long empresaId, Integer pageSize, Integer page) {
+    public Page<Usuario> get(String name, Integer pageSize, Integer page) {
         Pageable paging = PageRequest.of(page, pageSize);
 
-        return usuarioDAO.findPaged(name, empresaId, paging);
+        return usuarioDAO.findPaged(name, paging);
+    }
+
+    public Page<Usuario> getUsersEmpresa(String name, long empresaId, Integer pageSize, Integer page) {
+        Pageable paging = PageRequest.of(page, pageSize);
+
+        return usuarioDAO.findPagedEmpresa(name, empresaId, paging);
     }
 
     public void saveUser(UsuarioDTO userDTO) {
