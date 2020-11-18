@@ -4,15 +4,17 @@ SELECT * FROM silo.equipamento;
 SELECT * FROM silo.empresa;
 SELECT * FROM silo.historico;
 
+SELECT * FROM silo.historico where equipamento_id = 1;
+
 INSERT INTO empresa (`id`,`empresa_nome`) VALUES (1, 'SPtrans');
 INSERT INTO empresa (`id`,`empresa_nome`) VALUES (2, 'ViaSul');
 INSERT INTO empresa (`id`,`empresa_nome`) VALUES (3, 'MoveBus');
 INSERT INTO empresa (`id`,`empresa_nome`) VALUES (4, 'TransUniao');
 
-INSERT INTO usuario (`id`,  `nome`, `senha`,`empresa_id`) VALUES (1, 'admin', '$2a$10$ophOvFxBTwhbHsJ51OANTuP2VZRsHrtjR3rbpvXxlYEk7/rNx2M2q',1);
-INSERT INTO usuario (`id`,  `nome`, `senha`,`empresa_id`) VALUES (2, 'Daniel', '$2a$10$5AamCX5MQSrcXqaTQDWege3fIasqi5D.KA7uBGZF5xFPFRIh4ZIWa',2);
-INSERT INTO usuario (`id`,  `nome`, `senha`,`empresa_id`) VALUES (3, 'Danielle', '$2a$10$ZAYxlXzXP9QKALUTfwtOp.bVehpLoJsNkDahmkJzzLavgXP/E8mKG',3);
-INSERT INTO usuario (`id`,  `nome`, `senha`,`empresa_id`) VALUES (4, 'Edgar', '$2a$10$Yt91QAQfj9KZWb2LhW.rnuz7Li/sft9ZGRNE1g1f.8OHN3eMjXqsa',4);
+INSERT INTO usuario (`id`,  `nome`, `senha`,`empresa_id`, `nivel_acesso`) VALUES (1, 'admin', '$2a$10$ophOvFxBTwhbHsJ51OANTuP2VZRsHrtjR3rbpvXxlYEk7/rNx2M2q',1,'administrador');
+INSERT INTO usuario (`id`,  `nome`, `senha`,`empresa_id`, `nivel_acesso`) VALUES (2, 'Daniel', '$2a$10$5AamCX5MQSrcXqaTQDWege3fIasqi5D.KA7uBGZF5xFPFRIh4ZIWa',2,'administrador');
+INSERT INTO usuario (`id`,  `nome`, `senha`,`empresa_id`, `nivel_acesso`) VALUES (3, 'Danielle', '$2a$10$ZAYxlXzXP9QKALUTfwtOp.bVehpLoJsNkDahmkJzzLavgXP/E8mKG',3,'administrador');
+INSERT INTO usuario (`id`,  `nome`, `senha`,`empresa_id`, `nivel_acesso`) VALUES (4, 'Edgar', '$2a$10$Yt91QAQfj9KZWb2LhW.rnuz7Li/sft9ZGRNE1g1f.8OHN3eMjXqsa',4,'administrador');
 
 INSERT INTO historico (`id`, `datahora`, `qtd_passageiros`, `status`, `veiculo_id`, `equipamento_id`) VALUES(1,'03/11/2020 - 12:22:00',14,'Lotação - Baixa', 1,1);
 INSERT INTO historico (`id`, `datahora`, `qtd_passageiros`, `status`, `veiculo_id`, `equipamento_id`) VALUES(2,'03/11/2020 - 12:35:00',20,'Lotação - Média', 1,1);
