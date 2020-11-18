@@ -17,12 +17,15 @@ public class JwtResponse implements Serializable {
 
     private Empresa empresa;
 
-    public JwtResponse(String jwttoken, long expireAt, long id, String nome, Empresa empresa) {
+    private String nivelAcesso;
+
+    public JwtResponse(String jwttoken, long expireAt, long id, String nome, Empresa empresa, String nivelAcesso) {
         this.jwttoken = jwttoken;
         this.expireAt = expireAt;
         this.id = id;
         this.nome = nome;
         this.empresa = empresa;
+        this.nivelAcesso = nivelAcesso;
     }
 
     public String getToken() {
@@ -46,4 +49,6 @@ public class JwtResponse implements Serializable {
     }
 
     public Empresa getEmpresa() { return this.empresa; }
+
+    public String getNivelAcesso() {return  this.nivelAcesso;}
 }

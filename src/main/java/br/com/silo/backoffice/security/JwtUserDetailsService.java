@@ -30,7 +30,7 @@ public class JwtUserDetailsService implements UserDetailsService {
 
         List<GrantedAuthority> grantedAuthorityList = new ArrayList<>();
 
-        return new JwtUserDetails(user.getNome(), user.getSenha(), grantedAuthorityList, user.getId(), user.getEmpresa());
+        return new JwtUserDetails(user.getNome(), user.getSenha(), grantedAuthorityList, user.getId(), user.getEmpresa(), user.getNivelAcesso());
     }
 
     public Usuario save(Usuario usuario) {
