@@ -16,6 +16,8 @@ public class UsuarioDTO {
 
     Empresa empresa;
 
+    String nivelAcesso;
+
     //Empresa empresa;
 
 
@@ -25,6 +27,7 @@ public class UsuarioDTO {
         usuarioDTO.setId(usuario.getId());
         usuarioDTO.setNome(usuario.getNome());
         usuarioDTO.setToken(usuario.getToken());
+        usuarioDTO.setNivelAcesso(usuario.getNivelAcesso());
         return usuarioDTO;
     }
 
@@ -63,4 +66,12 @@ public class UsuarioDTO {
     public Empresa getEmpresa() {return empresa;}
 
     public void setEmpresa(Empresa empresa) {this.empresa = empresa;}
+
+    public String getNivelAcesso() {
+        return nivelAcesso;
+    }
+
+    public void setNivelAcesso(String nivelAcesso) {
+        this.nivelAcesso = nivelAcesso;
+    }
 }

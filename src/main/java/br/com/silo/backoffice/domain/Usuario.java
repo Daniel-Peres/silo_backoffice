@@ -26,6 +26,9 @@ public class Usuario {
     @JoinColumn(nullable = false)
     Empresa empresa;
 
+    @Column(name = "nivelAcesso")
+    String nivelAcesso;
+
     public Long getId() {
         return id;
     }
@@ -64,5 +67,13 @@ public class Usuario {
 
     public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
+    }
+
+    public String getNivelAcesso() {
+        return nivelAcesso;
+    }
+
+    public void setNivelAcesso(String nivelAcesso) {
+        this.nivelAcesso = nivelAcesso;
     }
 }
